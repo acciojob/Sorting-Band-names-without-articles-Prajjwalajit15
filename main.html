@@ -41,7 +41,31 @@
       }
     </style>
 
-    <ul></ul>
+   <ul id="band"></ul>
+
+	      <script>
+        let bandNames = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
+
+        // Custom sorting function to remove articles and compare lexicographically
+        function customSort(a, b) {
+            const articles = ['the', 'an', 'a'];
+            const cleanA = a.toLowerCase().replace(/^(the|an|a) /, '');
+            const cleanB = b.toLowerCase().replace(/^(the|an|a) /, '');
+            return cleanA.localeCompare(cleanB);
+        }
+
+        // Sort the band names using the custom sorting function
+        bandNames.sort(customSort);
+
+        // Create the HTML list and insert it into the 'band' ul element
+        const bandList = document.getElementById('band');
+        bandNames.forEach(name => {
+            const listItem = document.createElement('li');
+            listItem.textContent = name;
+            bandList.appendChild(listItem);
+        });
+    </script>
+
 
     <script type="text/javascript" src="./script.js"></script>
   </body>
